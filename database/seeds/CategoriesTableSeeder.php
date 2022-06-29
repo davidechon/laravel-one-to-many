@@ -14,7 +14,7 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $categoriesList = ['Primi piatti', 'Secondi piatti', 'Contorni', 'Antipasti', 'Dolci'];
+        $categoriesList = ['Antipasti', 'Primi piatti', 'Secondi piatti', 'Contorni', 'Dolci'];
         forEach($categoriesList as $category){
             $newCategory = new Category();
             $newCategory-> name = $category;
