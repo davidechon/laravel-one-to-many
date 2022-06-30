@@ -6,11 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Post;
+use App\Category;
 
 class PostController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource.   
      *
      * @return \Illuminate\Http\Response
      */
@@ -27,7 +28,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $categories = Category::all();
+        return view('admin.posts.create', compact('categories'));
     }
 
     /**
@@ -43,6 +45,7 @@ class PostController extends Controller
         $newPost->title = $data['title'];
         $slug = Str::of($data['title'])->slug("-");
         $newPost->content = $data['content'];
+        $newPost->category_id = $data['category_id'];
         $newPost->published = isset($data['published']);
         $count = 1;
         while(Post::where('slug', $slug)->first()){
