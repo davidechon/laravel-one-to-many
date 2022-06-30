@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 <form action="{{route('admin.posts.store')}}" method="POST">
-  @csrf
+  @csrf 
   <div class="form-group">
     <label for="title">Title</label>
     <input type="text" class="form-control" id="title" name="title" value="{{old('title')}}" placeholder="Inserisci titolo">
